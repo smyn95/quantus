@@ -151,6 +151,7 @@ export const Strategy = styled.section`
 
 export const Allocation = styled.section`
   position: relative;
+
   h1 {
     font-size: 18px;
   }
@@ -168,16 +169,12 @@ export const Allocation = styled.section`
         margin-top: 18px;
         width: 480px;
         height: 50px;
-        border: 1px solid #9f9f9f;
         border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
-
-        &:hover {
-          border: 1px solid white;
-        }
+        border: 1px solid #9f9f9f;
 
         &:after {
           content: '^';
@@ -186,7 +183,6 @@ export const Allocation = styled.section`
           right: 3%;
           font-size: 20px;
           font-weight: 100;
-          transform: rotate(-180deg);
         }
 
         input {
@@ -201,6 +197,34 @@ export const Allocation = styled.section`
   }
 `;
 
+export const AllocationMonth: any = styled.ul`
+  width: 480px;
+  > li:last-of-type {
+    border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : '#9f9f9f')};
+    &:after {
+      transform: ${(props: any) =>
+        props.aniMode ? 'rotate(0deg)' : 'rotate(-180deg)'};
+    }
+    &:hover {
+      border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : 'white')};
+    }
+  }
+`;
+
+export const AllocationMenu: any = styled.ul`
+  width: 480px;
+  > li:last-of-type {
+    border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : '#9f9f9f')};
+    &:after {
+      transform: ${(props: any) =>
+        props.aniMode ? 'rotate(0deg)' : 'rotate(-180deg)'};
+    }
+    &:hover {
+      border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : 'white')};
+    }
+  }
+`;
+
 export const AllocationList: any = styled.data`
   position: absolute;
   top: 70px !important;
@@ -210,6 +234,7 @@ export const AllocationList: any = styled.data`
   align-items: center;
   background: black;
   opacity: 0;
+  z-index: ${(props: any) => (props.aniMode ? '999' : '-1')};
   animation: ${(props: any) =>
     props.aniMode
       ? css`
@@ -218,7 +243,6 @@ export const AllocationList: any = styled.data`
       : css`
           ${fadeUp} 0.3s ease-in-out forwards
         `};
-  z-index: ${(props: any) => (props.animode ? '999' : '-1')};
 
   li {
     height: 36px;
@@ -250,6 +274,7 @@ export const Test = styled.button`
   margin: 0 auto;
   display: block;
 `;
+
 export const Add = styled.section`
   margin-top: 80px;
   h1 {
@@ -272,6 +297,7 @@ const fadeDown = keyframes`
     top: 2rem;
   }
 `;
+
 const fadeUp = keyframes`
   0%{
     opacity: 1;

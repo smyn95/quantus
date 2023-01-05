@@ -3,19 +3,21 @@ import { ChangeEvent, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 
 function App() {
-  const [tab, setTab] = useState<any>('1');
+  const [tab, setTab] = useState(0);
   const [banner, setBanner] = useState(false);
   const [strategy, setStrategy] = useState('');
   const [aniMode, setAniMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const btnArray = ['전략배분 (정적자산배분)', '듀얼모멘텀', 'VAA', 'DAA'];
 
+  console.log(aniMode);
+
   const onClickBanner = () => {
     setBanner((prev) => !prev);
   };
 
   const onClickTab = (event: any) => {
-    setTab(event?.currentTarget.id);
+    setTab(Number(event?.currentTarget.id));
   };
 
   const onClickOpenModal = () => {
@@ -25,7 +27,6 @@ function App() {
 
   const onChangeStrategy = (event: ChangeEvent<HTMLInputElement>) => {
     setStrategy(event.target.value);
-    console.log(strategy);
   };
 
   return (
@@ -79,24 +80,24 @@ function App() {
 
         <S.Allocation>
           <h1>자산배분 설정</h1>
-          <ul>
+          <S.AllocationMenu aniMode={aniMode}>
             <li>자산배분 알고리즘</li>
             <li onClick={onClickOpenModal}>
-              전략배분 (정적자산배분)
+              {btnArray[tab]}
               <S.AllocationList tab={tab} aniMode={aniMode}>
                 {btnArray.map((el: any, i: number) => (
-                  <li id={String(i + 1)} key={i} onClick={onClickTab}>
+                  <li id={String(i)} key={i} onClick={onClickTab}>
                     {el}
                   </li>
                 ))}
               </S.AllocationList>
             </li>
-          </ul>
+          </S.AllocationMenu>
 
-          <ul>
+          <S.AllocationMonth aniMode={aniMode}>
             <li>주기 리밸런싱</li>
             <li>월별</li>
-          </ul>
+          </S.AllocationMonth>
 
           <ul>
             <li>밴드 리밸런싱</li>
