@@ -1,23 +1,28 @@
 import * as S from './app.styles';
 import { ChangeEvent, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
+import AllocationPage from './components/units/allocation/allocation';
+import DualPage from './components/units/dual';
 
 function App() {
   const [tab, setTab] = useState(0);
+  const [tab2, setTab2] = useState(0);
   const [banner, setBanner] = useState(false);
   const [strategy, setStrategy] = useState('');
   const [aniMode, setAniMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const btnArray = ['전략배분 (정적자산배분)', '듀얼모멘텀', 'VAA', 'DAA'];
+  const btnArray = [
+    '월별',
+    '분기별',
+    '반기별',
+    '매년',
+    '하지 않음 (Buy-and-Hold)',
+  ];
 
-  console.log(aniMode);
+  const onClickBanner = () => setBanner((prev) => !prev);
 
-  const onClickBanner = () => {
-    setBanner((prev) => !prev);
-  };
-
-  const onClickTab = (event: any) => {
-    setTab(Number(event?.currentTarget.id));
+  const onClickTab2 = (event: any) => {
+    setTab2(Number(event?.currentTarget.id));
   };
 
   const onClickOpenModal = () => {
@@ -79,38 +84,40 @@ function App() {
         </S.Strategy>
 
         <S.Allocation>
-          <h1>자산배분 설정</h1>
-          <S.AllocationMenu aniMode={aniMode}>
-            <li>자산배분 알고리즘</li>
-            <li onClick={onClickOpenModal}>
-              {btnArray[tab]}
-              <S.AllocationList tab={tab} aniMode={aniMode}>
-                {btnArray.map((el: any, i: number) => (
-                  <li id={String(i)} key={i} onClick={onClickTab}>
-                    {el}
-                  </li>
-                ))}
-              </S.AllocationList>
-            </li>
-          </S.AllocationMenu>
+          <AllocationPage setTab={setTab} tab={tab} />
+          {tab === 0 ? (
+            <>
+              <S.AllocationMenu aniMode={aniMode}>
+                <li>주기 리밸런싱</li>
+                <li onClick={onClickOpenModal}>
+                  {btnArray[tab2]}
+                  <S.AllocationList tab={tab2} aniMode={aniMode}>
+                    {btnArray.map((el: any, i: number) => (
+                      <li id={String(i)} key={i} onClick={onClickTab2}>
+                        {el}
+                      </li>
+                    ))}
+                  </S.AllocationList>
+                </li>
+              </S.AllocationMenu>
 
-          <S.AllocationMonth aniMode={aniMode}>
-            <li>주기 리밸런싱</li>
-            <li>월별</li>
-          </S.AllocationMonth>
-
-          <ul>
-            <li>밴드 리밸런싱</li>
-            <li>
-              <input
-                type='number'
-                placeholder='리밸런싱 밴드 기준을 입력해주세요'
-              />
-            </li>
-          </ul>
-          <span>0~100%까지 입력할 수 있습니다. (0 입력시 비활성화)</span>
+              <S.Balance>
+                <li>밴드 리밸런싱</li>
+                <li>
+                  <input
+                    type='number'
+                    placeholder='리밸런싱 밴드 기준을 입력해주세요'
+                  />
+                </li>
+              </S.Balance>
+              <S.Span>
+                0~100%까지 입력할 수 있습니다. (0 입력시 비활성화)
+              </S.Span>
+            </>
+          ) : (
+            <DualPage />
+          )}
         </S.Allocation>
-
         <S.Add>
           <h1>자산군 추가</h1>
           <button>추가하기</button>

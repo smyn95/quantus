@@ -148,19 +148,20 @@ export const Strategy = styled.section`
     color: transparent;
   }
 `;
+export const Span = styled.span`
+  color: #ffffffb3;
+  font-size: 12px;
+  margin-top: 10px;
+  display: block;
+`;
+
+export const H1 = styled.h1`
+  font-size: 18px;
+`;
 
 export const Allocation = styled.section`
   position: relative;
 
-  h1 {
-    font-size: 18px;
-  }
-  span {
-    color: #ffffffb3;
-    font-size: 12px;
-    margin-top: 10px;
-    display: block;
-  }
   ul {
     padding-top: 30px;
     > li {
@@ -176,15 +177,6 @@ export const Allocation = styled.section`
         position: relative;
         border: 1px solid #9f9f9f;
 
-        &:after {
-          content: '^';
-          position: absolute;
-          color: #ec6126;
-          right: 3%;
-          font-size: 20px;
-          font-weight: 100;
-        }
-
         input {
           border: none;
           background: transparent;
@@ -197,25 +189,17 @@ export const Allocation = styled.section`
   }
 `;
 
-export const AllocationMonth: any = styled.ul`
-  width: 480px;
-  > li:last-of-type {
-    border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : '#9f9f9f')};
-    &:after {
-      transform: ${(props: any) =>
-        props.aniMode ? 'rotate(0deg)' : 'rotate(-180deg)'};
-    }
-    &:hover {
-      border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : 'white')};
-    }
-  }
-`;
-
 export const AllocationMenu: any = styled.ul`
   width: 480px;
   > li:last-of-type {
     border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : '#9f9f9f')};
     &:after {
+      content: '^';
+      position: absolute;
+      color: #ec6126;
+      right: 3%;
+      font-size: 20px;
+      font-weight: 100;
       transform: ${(props: any) =>
         props.aniMode ? 'rotate(0deg)' : 'rotate(-180deg)'};
     }
@@ -258,6 +242,26 @@ export const AllocationList: any = styled.data`
     &:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
+  }
+`;
+
+export const Balance = styled.ul`
+  > li {
+    &:last-of-type {
+      &:after {
+        content: '%';
+        position: absolute;
+        color: white;
+        right: 3%;
+        font-size: 16px;
+        font-weight: 100;
+      }
+    }
+  }
+
+  input:focus-visible {
+    outline: 1px solid #ec6126;
+    border-radius: 4px;
   }
 `;
 
