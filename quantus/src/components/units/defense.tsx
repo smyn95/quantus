@@ -1,7 +1,7 @@
 import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
-export default function DualPage(props: any) {
+export default function DefensePage(props: any) {
   const [, setIsOpen] = useState(false);
   const [tab, setTab] = useState(0);
   const [aniMode, setAniMode] = useState(false);
@@ -13,15 +13,16 @@ export default function DualPage(props: any) {
     setIsOpen(true);
     setAniMode((prev) => !prev);
   };
-  // const dualArray2 = ['AGG', 'LQD', 'SHY', 'IEF'];
   return (
     <Dual>
-      <li>{`${props.title} ${props.el}`}</li>
+      <li>
+        {props.title} {props.el}
+      </li>
       <li onClick={onClickOpenModal}>
-        {props.dualArray[tab]}
+        {props.defenseArray[tab]}
 
         <AllocationList tab={tab} aniMode={aniMode}>
-          {props.dualArray.map((el: any, i: number) => (
+          {props.defenseArray.map((el: any, i: number) => (
             <li id={String(i)} key={i} onClick={onClickTab}>
               {el}
             </li>

@@ -15,7 +15,10 @@ export const Wrapper = styled.div`
   width: 945px;
   margin: 0 auto;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
+
 export const BannerWrapper = styled.div`
   width: 945px;
   margin: 0 auto;
@@ -158,6 +161,11 @@ export const Span = styled.span`
 export const H1 = styled.h1`
   font-size: 18px;
 `;
+export const Section = styled.section`
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+`;
 
 export const Allocation = styled.section`
   position: relative;
@@ -211,7 +219,7 @@ export const AllocationMenu: any = styled.ul`
 
 export const AllocationList: any = styled.ul`
   position: absolute;
-  top: 70px !important;
+  top: 60px !important;
   display: flex;
   width: 480px;
   flex-direction: column;
@@ -272,6 +280,8 @@ export const Balance = styled.ul`
 `;
 
 export const Test = styled.button`
+  align-self: center;
+  margin-top: 50px;
   background: linear-gradient(
     284deg,
     rgb(236, 38, 38) 0%,
@@ -294,6 +304,11 @@ export const Add = styled.section`
     margin-block: 30px;
     background: #ec6126;
     width: 80px;
+
+    &.disabled {
+      background: #3e3e3e;
+      cursor: Default;
+    }
   }
 `;
 

@@ -3,6 +3,7 @@ import { ChangeEvent, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import AllocationPage from './components/units/allocation/allocation';
 import DualPage from './components/units/dual';
+import DefensePage from './components/units/defense';
 
 function App() {
   const [tab, setTab] = useState(0);
@@ -10,7 +11,7 @@ function App() {
   const [banner, setBanner] = useState(false);
   const [strategy, setStrategy] = useState('');
   const [aniMode, setAniMode] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [, setIsOpen] = useState(false);
   const btnArray = [
     '월별',
     '분기별',
@@ -18,6 +19,24 @@ function App() {
     '매년',
     '하지 않음 (Buy-and-Hold)',
   ];
+  const dualArray = [
+    'SPY',
+    'EFA',
+    'QQQ',
+    'KOSPI',
+    'KOSDAQ',
+    'GLD',
+    'VNQ',
+    'TLT',
+    'AGG',
+    'VEA',
+  ];
+
+  const month = ['3개월', '6개월', '12개월'];
+
+  const defenseArray = ['AGG', 'LQD', 'SHY', 'IEF'];
+
+  const dual = ['01', '02'];
 
   const onClickBanner = () => setBanner((prev) => !prev);
 
@@ -115,13 +134,56 @@ function App() {
               </S.Span>
             </>
           ) : (
-            <DualPage />
+            <>
+              <S.Section>
+                {dual.map((el, index) => (
+                  <DualPage
+                    dualArray={dualArray}
+                    title={'공격자산'}
+                    key={el}
+                    el={el}
+                  />
+                ))}
+              </S.Section>
+              <S.Section>
+                <DefensePage defenseArray={defenseArray} title={'방어자산'} />
+              </S.Section>
+            </>
           )}
         </S.Allocation>
-        <S.Add>
-          <h1>자산군 추가</h1>
-          <button>추가하기</button>
-        </S.Add>
+
+        {tab === 0 && (
+          <S.Add>
+            <h1>자산군 추가</h1>
+            <button>추가하기</button>
+          </S.Add>
+        )}
+
+        {tab === 1 && (
+          <>
+            <S.Add>
+              <h1>페어 추가 (지원 예정)</h1>
+              <button className='disabled' type='button'>
+                추가하기
+              </button>
+            </S.Add>
+            <S.Allocation>
+              <S.AllocationMenu aniMode={aniMode}>
+                <li>모멘텀 기간</li>
+                <li onClick={onClickOpenModal}>
+                  {month[tab2]}
+                  <S.AllocationList tab={tab2} aniMode={aniMode}>
+                    {month.map((el: any, i: number) => (
+                      <li id={String(i)} key={i} onClick={onClickTab2}>
+                        {el}
+                      </li>
+                    ))}
+                  </S.AllocationList>
+                </li>
+              </S.AllocationMenu>
+            </S.Allocation>
+          </>
+        )}
 
         <S.Test type='submit'>백테스트</S.Test>
       </S.Wrapper>
