@@ -45,19 +45,6 @@ export default function DualPage() {
             </AllocationList>
           </li>
         </Dual>
-        <Dual>
-          <li>공격자산 02</li>
-          <li onClick={onClickOpenModal}>
-            {dualArray[tab]}
-            <AllocationList tab={tab} aniMode={aniMode}>
-              {dualArray.map((el: any, i: number) => (
-                <li id={String(i)} key={i} onClick={onClickTab}>
-                  {el}
-                </li>
-              ))}
-            </AllocationList>
-          </li>
-        </Dual>
       </Section>
       <Section>
         <Dual>
@@ -75,10 +62,12 @@ export const Section = styled.section`
 `;
 
 export const Dual = styled.ul`
-  li:last-of-type {
+  > li:last-of-type {
     width: 160px !important;
     height: 45px;
+    margin-top: 18px;
     border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : '#9f9f9f')};
+
     &:after {
       content: '^';
       position: absolute;
@@ -95,11 +84,11 @@ export const Dual = styled.ul`
   }
 `;
 
-export const AllocationList: any = styled.data`
+export const AllocationList: any = styled.ul`
   position: absolute;
-  top: 70px !important;
+  top: 0 !important;
   display: flex;
-  width: 480px;
+  width: 160px;
   flex-direction: column;
   align-items: center;
   background: black;

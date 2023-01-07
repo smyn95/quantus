@@ -161,21 +161,18 @@ export const H1 = styled.h1`
 
 export const Allocation = styled.section`
   position: relative;
+  flex-wrap: wrap;
+  max-width: 840px;
 
   ul {
-    padding-top: 30px;
     > li {
       &:last-of-type {
         cursor: pointer;
-        margin-top: 18px;
-        width: 480px;
-        height: 50px;
         border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
-        border: 1px solid #9f9f9f;
 
         input {
           border: none;
@@ -191,8 +188,11 @@ export const Allocation = styled.section`
 
 export const AllocationMenu: any = styled.ul`
   width: 480px;
+  padding-top: 30px;
   > li:last-of-type {
     border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : '#9f9f9f')};
+    height: 50px;
+    margin-top: 18px;
     &:after {
       content: '^';
       position: absolute;
@@ -209,7 +209,7 @@ export const AllocationMenu: any = styled.ul`
   }
 `;
 
-export const AllocationList: any = styled.data`
+export const AllocationList: any = styled.ul`
   position: absolute;
   top: 70px !important;
   display: flex;
@@ -218,7 +218,7 @@ export const AllocationList: any = styled.data`
   align-items: center;
   background: black;
   opacity: 0;
-  z-index: ${(props: any) => (props.aniMode ? '999' : '-1')};
+  z-index: ${(props: any) => (props.aniMode ? '9999' : '-1')};
   animation: ${(props: any) =>
     props.aniMode
       ? css`
@@ -235,6 +235,7 @@ export const AllocationList: any = styled.data`
     display: flex;
     align-items: center;
     justify-content: center;
+
     &:nth-of-type(${(props: any) => (props.tab ? props.tab : 1)}) {
       background-color: #ec612629;
     }
@@ -246,8 +247,13 @@ export const AllocationList: any = styled.data`
 `;
 
 export const Balance = styled.ul`
+  padding-top: 30px;
+  width: 480px;
   > li {
     &:last-of-type {
+      border: 1px solid #9f9f9f;
+      height: 50px;
+      margin-top: 18px;
       &:after {
         content: '%';
         position: absolute;
