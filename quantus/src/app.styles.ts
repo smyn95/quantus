@@ -8,7 +8,7 @@ export const Fixed = styled.section`
   top: 0px;
   position: fixed;
   width: 100%;
-  background: black;
+  background: #0e0e0e;
 `;
 
 export const Wrapper = styled.div`
@@ -33,6 +33,9 @@ export const Wrapper = styled.div`
     }
     .ant-picker-suffix {
       color: #ec6126;
+    }
+    .ant-picker-input > input {
+      color: #fff;
     }
   }
 `;
@@ -101,7 +104,8 @@ export const Nav = styled.nav`
   width: 100%;
   height: 52px;
   border-block: 1px solid #151515;
-  margin-bottom: 50px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px,
+    rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;
 `;
 
 export const NavList = styled.ul`
@@ -141,9 +145,10 @@ export const StrategyBtn: any = styled.button`
 `;
 
 export const Strategy = styled.section`
-  background: black;
+  padding: 0 300px;
+  background: #0e0e0e;
   height: 150px;
-  margin-top: 25%;
+  margin-top: 15%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -263,7 +268,7 @@ export const AllocationList: any = styled.ul`
     align-items: center;
     justify-content: center;
 
-    &:nth-of-type(${(props: any) => (props.tab ? props.tab : 1)}) {
+    &:nth-of-type(${(props: any) => (props.monthTab ? props.monthTab : 1)}) {
       background-color: #ec612629;
     }
 
@@ -300,7 +305,7 @@ export const Balance = styled.ul`
 
 export const Test = styled.button`
   align-self: center;
-  margin-top: 20%;
+  margin: 10% 0;
   background: linear-gradient(
     284deg,
     rgb(236, 38, 38) 0%,
@@ -365,5 +370,39 @@ const fadeUp = keyframes`
   to{
     opacity: 0;
     top: 0;
+  }
+`;
+
+export const Footer = styled.footer`
+  background: #000;
+  height: 223px;
+  width: 100%;
+  padding: 0 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    li {
+      width: 50%;
+      color: #6e6e6e;
+      margin: 1% 0;
+
+      &:nth-of-type(even) {
+        text-align: right;
+      }
+      &:nth-of-type(2) {
+        text-decoration: underline;
+        color: #9f9f9f;
+      }
+      &:nth-of-type(4) {
+        font-size: 14px;
+      }
+    }
   }
 `;

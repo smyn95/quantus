@@ -3,15 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { globalStyles } from './commons/styles/globalStyles';
-import reportWebVitals from './reportWebVitals';
 import 'antd/dist/reset.css';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <Global styles={globalStyles} />
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
-
-reportWebVitals();

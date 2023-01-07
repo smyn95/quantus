@@ -12,7 +12,7 @@ export const globalStyles = css`
 
   body {
     font-size: 16px;
-    background-color: black;
+    background-color: #0e0e0e;
     color: white;
   }
   input::-webkit-outer-spin-button,

@@ -9,6 +9,7 @@ import KanariaPage from './components/units/kanaria';
 
 function App() {
   const [tab, setTab] = useState(0);
+  const [monthTab, setMonthTab] = useState(0);
   const [banner, setBanner] = useState(false);
   const [strategy, setStrategy] = useState('');
   const [aniMode, setAniMode] = useState(false);
@@ -87,6 +88,10 @@ function App() {
     setTab(Number(event?.currentTarget.id));
   };
 
+  const onClickMonthTab = (event: any) => {
+    setMonthTab(Number(event?.currentTarget.id));
+  };
+
   const onClickOpenModal = () => {
     setIsOpen(true);
     setAniMode((prev) => !prev);
@@ -135,27 +140,28 @@ function App() {
         </S.Nav>
       </S.Fixed>
 
-      <S.Wrapper>
-        <S.Strategy>
-          <input
-            type='text'
-            placeholder='전략 이름을 입력해주세요'
-            onChange={onChangeStrategy}
-          />
-          <S.StrategyBtn strategy={strategy}>전략 저장</S.StrategyBtn>
-        </S.Strategy>
+      <S.Strategy>
+        <input
+          type='text'
+          placeholder='전략 이름을 입력해주세요'
+          onChange={onChangeStrategy}
+        />
+        <S.StrategyBtn strategy={strategy}>전략 저장</S.StrategyBtn>
+      </S.Strategy>
 
+      <S.Wrapper>
         <S.Allocation>
           <AllocationPage onClickTab={onClickTab} tab={tab} />
+
           {tab === 0 && (
             <>
               <S.AllocationMenu aniMode={aniMode}>
                 <li>주기 리밸런싱</li>
                 <li onClick={onClickOpenModal}>
-                  {btnArray[tab]}
-                  <S.AllocationList tab={tab} aniMode={aniMode}>
+                  {btnArray[monthTab]}
+                  <S.AllocationList monthTab={monthTab} aniMode={aniMode}>
                     {btnArray.map((el: any, i: number) => (
-                      <li id={String(i)} key={i} onClick={onClickTab}>
+                      <li id={String(i)} key={i} onClick={onClickMonthTab}>
                         {el}
                       </li>
                     ))}
@@ -212,10 +218,10 @@ function App() {
                 <S.AllocationMenu aniMode={aniMode}>
                   <li>모멘텀 기간</li>
                   <li onClick={onClickOpenModal}>
-                    {month[tab]}
-                    <S.AllocationList tab={tab} aniMode={aniMode}>
+                    {month[monthTab]}
+                    <S.AllocationList monthTab={monthTab} aniMode={aniMode}>
                       {month.map((el: any, i: number) => (
-                        <li id={String(i)} key={i} onClick={onClickTab}>
+                        <li id={String(i)} key={i} onClick={onClickMonthTab}>
                           {el}
                         </li>
                       ))}
@@ -303,6 +309,25 @@ function App() {
 
         <S.Test type='submit'>백테스트</S.Test>
       </S.Wrapper>
+      <S.Footer>
+        <ul>
+          <li>© 2022 Quantus. All rights reserved.</li>
+          <li>
+            <a href='https://cafe.naver.com/quantus' rel='noopener noreferrer'>
+              네이버 카페 바로가기
+            </a>
+          </li>
+          <li>문의: info@quantus.kr</li>
+          <li>
+            <a
+              href='https://opposite-theater-c57.notion.site/d8d210030a2d47eba7c4fae775375a03'
+              rel='noopener noreferrer'
+            >
+              이용약관
+            </a>
+          </li>
+        </ul>
+      </S.Footer>
     </>
   );
 }
