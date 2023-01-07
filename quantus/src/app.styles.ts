@@ -12,11 +12,29 @@ export const Fixed = styled.section`
 `;
 
 export const Wrapper = styled.div`
-  width: 945px;
+  padding: 0 300px;
   margin: 0 auto;
   height: 100%;
   display: flex;
   flex-direction: column;
+  flex: 1 1 0%;
+
+  .ant-picker-range {
+    border-radius: 4px;
+    width: 480px;
+    background: transparent;
+    height: 45px;
+
+    input::placeholder {
+      color: white;
+    }
+    .ant-picker-separator {
+      color: white;
+    }
+    .ant-picker-suffix {
+      color: #ec6126;
+    }
+  }
 `;
 
 export const BannerWrapper = styled.div`
@@ -281,7 +299,7 @@ export const Balance = styled.ul`
 
 export const Test = styled.button`
   align-self: center;
-  margin-top: 50px;
+  margin-top: 20%;
   background: linear-gradient(
     284deg,
     rgb(236, 38, 38) 0%,
@@ -291,8 +309,19 @@ export const Test = styled.button`
   height: 53px;
   font-size: 18px;
   font-weight: bold;
-  margin: 0 auto;
-  display: block;
+`;
+
+export const Date = styled.section`
+  margin-top: 5%;
+  width: 480px;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    li {
+      width: 50%;
+    }
+  }
 `;
 
 export const Add = styled.section`

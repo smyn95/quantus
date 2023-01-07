@@ -4,6 +4,7 @@ import { CloseOutlined } from '@ant-design/icons';
 import AllocationPage from './components/units/allocation/allocation';
 import DualPage from './components/units/dual';
 import DefensePage from './components/units/defense';
+import { DatePicker, Space } from 'antd';
 
 function App() {
   const [tab, setTab] = useState(0);
@@ -31,7 +32,7 @@ function App() {
     'AGG',
     'VEA',
   ];
-
+  const { RangePicker } = DatePicker;
   const month = ['3개월', '6개월', '12개월'];
 
   const defenseArray = ['AGG', 'LQD', 'SHY', 'IEF'];
@@ -184,6 +185,15 @@ function App() {
             </S.Allocation>
           </>
         )}
+        <S.Date>
+          <ul>
+            <li>시작일 설정</li>
+            <li>종료일 설정</li>
+          </ul>
+          <Space direction='vertical' size={12}>
+            <RangePicker />
+          </Space>
+        </S.Date>
 
         <S.Test type='submit'>백테스트</S.Test>
       </S.Wrapper>
