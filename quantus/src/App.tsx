@@ -5,10 +5,10 @@ import AllocationPage from './components/units/allocation/allocation';
 import DualPage from './components/units/dual';
 import DefensePage from './components/units/defense';
 import { DatePicker, Space } from 'antd';
+import KanariaPage from './components/units/kanaria';
 
 function App() {
   const [tab, setTab] = useState(0);
-  const [tab2, setTab2] = useState(0);
   const [banner, setBanner] = useState(false);
   const [strategy, setStrategy] = useState('');
   const [aniMode, setAniMode] = useState(false);
@@ -32,17 +32,59 @@ function App() {
     'AGG',
     'VEA',
   ];
-  const { RangePicker } = DatePicker;
-  const month = ['3개월', '6개월', '12개월'];
 
   const defenseArray = ['AGG', 'LQD', 'SHY', 'IEF'];
+  const kanariaArray = [
+    'SPY',
+    'IWM',
+    'QQQ',
+    'VGK',
+    'EWJ',
+    'VWO',
+    'VNQ',
+    'GSG',
+    'GLD',
+    'TLT',
+    'HYG',
+    'LQD',
+    'AGG',
+    'VEA',
+    'KOSPI',
+    'KOSDAQ',
+    'SHY',
+    'IEF',
+    'UST',
+    'BND',
+  ];
+  const { RangePicker } = DatePicker;
+
+  const month = ['3개월', '6개월', '12개월'];
 
   const dual = ['01', '02'];
 
+  const vaa = ['01', '02', '03', '04'];
+
+  const daa = [
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+  ];
+
+  const vaaDefenseArray = ['01', '02', '03'];
+
   const onClickBanner = () => setBanner((prev) => !prev);
 
-  const onClickTab2 = (event: any) => {
-    setTab2(Number(event?.currentTarget.id));
+  const onClickTab = (event: any) => {
+    setTab(Number(event?.currentTarget.id));
   };
 
   const onClickOpenModal = () => {
@@ -104,16 +146,16 @@ function App() {
         </S.Strategy>
 
         <S.Allocation>
-          <AllocationPage setTab={setTab} tab={tab} />
-          {tab === 0 ? (
+          <AllocationPage onClickTab={onClickTab} tab={tab} />
+          {tab === 0 && (
             <>
               <S.AllocationMenu aniMode={aniMode}>
                 <li>주기 리밸런싱</li>
                 <li onClick={onClickOpenModal}>
-                  {btnArray[tab2]}
-                  <S.AllocationList tab={tab2} aniMode={aniMode}>
+                  {btnArray[tab]}
+                  <S.AllocationList tab={tab} aniMode={aniMode}>
                     {btnArray.map((el: any, i: number) => (
-                      <li id={String(i)} key={i} onClick={onClickTab2}>
+                      <li id={String(i)} key={i} onClick={onClickTab}>
                         {el}
                       </li>
                     ))}
@@ -133,11 +175,20 @@ function App() {
               <S.Span>
                 0~100%까지 입력할 수 있습니다. (0 입력시 비활성화)
               </S.Span>
+
+              <S.Add>
+                <h1>자산군 추가</h1>
+                <button>추가하기</button>
+              </S.Add>
             </>
-          ) : (
-            <>
+          )}
+        </S.Allocation>
+
+        {tab === 1 && (
+          <>
+            <S.Allocation>
               <S.Section>
-                {dual.map((el, index) => (
+                {dual.map((el) => (
                   <DualPage
                     dualArray={dualArray}
                     title={'공격자산'}
@@ -149,42 +200,97 @@ function App() {
               <S.Section>
                 <DefensePage defenseArray={defenseArray} title={'방어자산'} />
               </S.Section>
-            </>
-          )}
-        </S.Allocation>
 
-        {tab === 0 && (
-          <S.Add>
-            <h1>자산군 추가</h1>
-            <button>추가하기</button>
-          </S.Add>
-        )}
+              <S.Add>
+                <h1>페어 추가 (지원 예정)</h1>
+                <button className='disabled' type='button'>
+                  추가하기
+                </button>
+              </S.Add>
 
-        {tab === 1 && (
-          <>
-            <S.Add>
-              <h1>페어 추가 (지원 예정)</h1>
-              <button className='disabled' type='button'>
-                추가하기
-              </button>
-            </S.Add>
-            <S.Allocation>
-              <S.AllocationMenu aniMode={aniMode}>
-                <li>모멘텀 기간</li>
-                <li onClick={onClickOpenModal}>
-                  {month[tab2]}
-                  <S.AllocationList tab={tab2} aniMode={aniMode}>
-                    {month.map((el: any, i: number) => (
-                      <li id={String(i)} key={i} onClick={onClickTab2}>
-                        {el}
-                      </li>
-                    ))}
-                  </S.AllocationList>
-                </li>
-              </S.AllocationMenu>
+              <S.Allocation>
+                <S.AllocationMenu aniMode={aniMode}>
+                  <li>모멘텀 기간</li>
+                  <li onClick={onClickOpenModal}>
+                    {month[tab]}
+                    <S.AllocationList tab={tab} aniMode={aniMode}>
+                      {month.map((el: any, i: number) => (
+                        <li id={String(i)} key={i} onClick={onClickTab}>
+                          {el}
+                        </li>
+                      ))}
+                    </S.AllocationList>
+                  </li>
+                </S.AllocationMenu>
+              </S.Allocation>
             </S.Allocation>
           </>
         )}
+
+        {tab === 2 && (
+          <>
+            <S.Allocation>
+              <S.Section>
+                {vaa.map((el) => (
+                  <DualPage
+                    dualArray={dualArray}
+                    title={'공격자산'}
+                    key={el}
+                    el={el}
+                  />
+                ))}
+              </S.Section>
+              <S.Section>
+                {vaaDefenseArray.map((el) => (
+                  <DefensePage
+                    defenseArray={defenseArray}
+                    title={'방어자산'}
+                    key={el}
+                    el={el}
+                  />
+                ))}
+              </S.Section>
+            </S.Allocation>
+          </>
+        )}
+
+        {tab === 3 && (
+          <>
+            <S.Allocation>
+              <S.Section>
+                {daa.map((el) => (
+                  <DualPage
+                    dualArray={dualArray}
+                    title={'공격자산'}
+                    key={el}
+                    el={el}
+                  />
+                ))}
+              </S.Section>
+              <S.Section>
+                {vaaDefenseArray.map((el) => (
+                  <DefensePage
+                    defenseArray={defenseArray}
+                    title={'방어자산'}
+                    key={el}
+                    el={el}
+                  />
+                ))}
+              </S.Section>
+              <S.Section>
+                {dual.map((el) => (
+                  <KanariaPage
+                    kanariaArray={kanariaArray}
+                    title={'카라니아 자산'}
+                    key={el}
+                    el={el}
+                  />
+                ))}
+              </S.Section>
+            </S.Allocation>
+          </>
+        )}
+
         <S.Date>
           <ul>
             <li>시작일 설정</li>

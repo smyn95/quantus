@@ -181,6 +181,7 @@ export const H1 = styled.h1`
 `;
 export const Section = styled.section`
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
   margin: 30px 0;
 `;
@@ -188,7 +189,7 @@ export const Section = styled.section`
 export const Allocation = styled.section`
   position: relative;
   flex-wrap: wrap;
-  max-width: 840px;
+  width: 840px;
 
   ul {
     > li {
@@ -312,8 +313,8 @@ export const Test = styled.button`
 `;
 
 export const Date = styled.section`
-  margin-top: 5%;
   width: 480px;
+  padding-top: 24px;
   ul {
     display: flex;
     justify-content: space-between;
@@ -330,7 +331,7 @@ export const Add = styled.section`
     font-size: 18px;
   }
   button {
-    margin-block: 30px;
+    margin-top: 30px;
     background: #ec6126;
     width: 80px;
 

@@ -1,7 +1,8 @@
 import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
-export default function DualPage(props: any) {
+
+export default function KanariaPage(props: any) {
   const [, setIsOpen] = useState(false);
   const [tab, setTab] = useState(0);
   const [aniMode, setAniMode] = useState(false);
@@ -13,16 +14,16 @@ export default function DualPage(props: any) {
     setIsOpen(true);
     setAniMode((prev) => !prev);
   };
-
   return (
     <Dual>
       <li>
         {props.title} {props.el}
       </li>
       <li onClick={onClickOpenModal}>
-        {props.dualArray[tab]}
+        {props.kanariaArray[tab]}
+
         <AllocationList tab={tab} aniMode={aniMode}>
-          {props.dualArray.map((el: any, i: number) => (
+          {props.kanariaArray.map((el: any, i: number) => (
             <li id={String(i)} key={i} onClick={onClickTab}>
               {el}
             </li>
@@ -58,7 +59,7 @@ export const Dual = styled.ul`
 
 export const AllocationList: any = styled.ul`
   position: absolute;
-  top: 0 !important;
+  top: -300% !important;
   display: flex;
   width: 160px;
   flex-direction: column;

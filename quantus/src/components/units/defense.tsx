@@ -1,6 +1,7 @@
 import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
+
 export default function DefensePage(props: any) {
   const [, setIsOpen] = useState(false);
   const [tab, setTab] = useState(0);
