@@ -6,6 +6,7 @@ import DualPage from './components/units/dual';
 import DefensePage from './components/units/defense';
 import { DatePicker, Space } from 'antd';
 import KanariaPage from './components/units/kanaria';
+import AddDataPage from './components/units/addData';
 
 function App() {
   const [tab, setTab] = useState(0);
@@ -14,10 +15,11 @@ function App() {
   const [strategy, setStrategy] = useState('');
   const [backTest, setBackTest] = useState('백테스트');
   const [aniMode, setAniMode] = useState(false);
-  const [, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isGraph, setIsGraph] = useState(false);
+  const [addData, setAddData] = useState(false);
   const [graph, setGraph] = useState(0);
+  const [option, setOption] = useState(0);
 
   const btnArray = [
     '월별',
@@ -98,7 +100,6 @@ function App() {
   };
 
   const onClickOpenModal = () => {
-    setIsOpen(true);
     setAniMode((prev) => !prev);
   };
 
@@ -125,6 +126,20 @@ function App() {
         setBackTest('백테스트');
       }, 1200);
     }, 3500);
+  };
+
+  const onClickAdd = () => {
+    setAddData(true);
+  };
+
+  const optionEntity = (operation: string) => () => {
+    if (operation === 'plus') {
+      setOption((prev) => prev + 1);
+    }
+    if (operation === 'minus') {
+      if (option === 0) return;
+      setOption((prev) => prev - 1);
+    }
   };
 
   return (
@@ -210,7 +225,30 @@ function App() {
 
               <S.Add>
                 <h1>자산군 추가</h1>
-                <button>추가하기</button>
+                {addData && (
+                  <>
+                    {new Array(option).fill(1).map((_, i) => (
+                      <>
+                        <S.Data>
+                          <AddDataPage i={i} />
+
+                          <S.Balance>
+                            <li>비중</li>
+                            <li>
+                              <input type='number' defaultValue={100} />
+                            </li>
+                          </S.Balance>
+                          <S.Span>0~100까지 입력할 수 있습니다.</S.Span>
+                        </S.Data>
+                        <S.DelBtn onClick={optionEntity('minus')}>
+                          삭제하기
+                        </S.DelBtn>
+                      </>
+                    ))}
+                    <button onClick={optionEntity('plus')}>추가하기</button>
+                  </>
+                )}
+                {!addData && <button onClick={onClickAdd}>추가하기</button>}
               </S.Add>
             </>
           )}

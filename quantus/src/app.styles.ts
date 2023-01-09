@@ -366,6 +366,49 @@ export const Date = styled.section`
   }
 `;
 
+export const Data = styled.data``;
+
+export const DataList: any = styled.ul`
+  position: absolute;
+  top: -610% !important;
+  width: 480px;
+  height: 290px;
+  overflow-y: auto;
+  background: black;
+  opacity: 0;
+  z-index: ${(props: any) => (props.isOpen ? '9999' : '-1')};
+  animation: ${(props: any) =>
+    props.isOpen
+      ? css`
+          ${fadeDown} 0.3s ease-in-out 0.2s forwards
+        `
+      : css`
+          ${fadeUp} 0.3s ease-in-out forwards
+        `};
+
+  li {
+    height: 36px;
+    background: black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    &:last-of-type {
+      justify-content: flex-start !important;
+    }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+`;
+
+export const DelBtn = styled.button`
+  background: black !important;
+  color: white;
+  margin-right: 15px;
+`;
+
 export const Add = styled.section`
   margin-top: 80px;
   h1 {
