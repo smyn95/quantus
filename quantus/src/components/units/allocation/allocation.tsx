@@ -10,6 +10,7 @@ export default function AllocationPage(props: any) {
     setIsOpen(true);
     setAniMode((prev) => !prev);
   };
+  console.log(props.tab);
 
   return (
     <>

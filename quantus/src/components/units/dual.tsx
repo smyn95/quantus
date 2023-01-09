@@ -2,18 +2,23 @@ import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 export default function DualPage(props: any) {
-  const [, setIsOpen] = useState(false);
-  const [tab, setTab] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const [tab, setTab] = useState(Math.floor(Math.random() * 10));
   const [aniMode, setAniMode] = useState(false);
 
   const onClickTab = (event: any) => {
     setTab(Number(event?.currentTarget.id));
+    onClickCloseModal(event);
   };
   const onClickOpenModal = () => {
     setIsOpen(true);
     setAniMode((prev) => !prev);
   };
-
+  const onClickCloseModal = (event: any) => {
+    event.stopPropagation();
+    setIsOpen(false);
+    setAniMode(false);
+  };
   return (
     <Dual>
       <li>
@@ -21,17 +26,35 @@ export default function DualPage(props: any) {
       </li>
       <li onClick={onClickOpenModal}>
         {props.dualArray[tab]}
-        <AllocationList tab={tab} aniMode={aniMode}>
-          {props.dualArray.map((el: any, i: number) => (
-            <li id={String(i)} key={i} onClick={onClickTab}>
-              {el}
-            </li>
-          ))}
-        </AllocationList>
+        {isOpen && (
+          <>
+            <Background
+              id='background'
+              onClick={onClickCloseModal}
+            ></Background>
+            <AllocationList tab={tab} aniMode={aniMode}>
+              {props.dualArray.map((el: any, i: number) => (
+                <li id={String(i)} key={i} onClick={onClickTab}>
+                  {el}
+                </li>
+              ))}
+            </AllocationList>
+          </>
+        )}
       </li>
     </Dual>
   );
 }
+const Background = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: 3;
+  cursor: default;
+`;
 
 export const Dual = styled.ul`
   > li:last-of-type {
@@ -65,7 +88,7 @@ export const AllocationList: any = styled.ul`
   align-items: center;
   background: black;
   opacity: 0;
-  z-index: ${(props: any) => (props.aniMode ? '999' : '-1')};
+  z-index: ${(props: any) => (props.aniMode ? '999' : '4')};
   animation: ${(props: any) =>
     props.aniMode
       ? css`
@@ -82,7 +105,7 @@ export const AllocationList: any = styled.ul`
     display: flex;
     align-items: center;
     justify-content: center;
-    &:nth-of-type(${(props: any) => (props.tab ? props.tab : 1)}) {
+    &:nth-of-type(${(props: any) => (props.tab ? props.tab + 1 : 1)}) {
       background-color: #ec612629;
     }
 

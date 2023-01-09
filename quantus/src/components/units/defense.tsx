@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function DefensePage(props: any) {
   const [, setIsOpen] = useState(false);
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(Math.floor(Math.random() * 4));
   const [aniMode, setAniMode] = useState(false);
 
   const onClickTab = (event: any) => {

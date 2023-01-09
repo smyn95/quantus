@@ -268,7 +268,9 @@ export const AllocationList: any = styled.ul`
     align-items: center;
     justify-content: center;
 
-    &:nth-of-type(${(props: any) => (props.monthTab ? props.monthTab : 1)}) {
+    &:nth-of-type(
+        ${(props: any) => (props.monthTab ? props.monthTab + 1 : 1)}
+      ) {
       background-color: #ec612629;
     }
 
@@ -315,6 +317,39 @@ export const Test = styled.button`
   height: 53px;
   font-size: 18px;
   font-weight: bold;
+`;
+
+export const TestOnLoading = styled.button`
+  align-self: center;
+  margin: 10% 0;
+  width: 160px;
+  height: 53px;
+  border: 1px solid #aaa;
+  background: transparent;
+  position: relative;
+
+  span {
+    background: linear-gradient(
+      284deg,
+      rgb(236, 38, 38) 0%,
+      rgb(236, 97, 38) 100%
+    );
+    height: 100%;
+    max-width: 100%;
+    min-width: 0%;
+    border-radius: 4px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`;
+export const GraphPercent: any = styled.span`
+  width: ${(props: any) => {
+    return `${props.graph}%`;
+  }};
+  transition: 1s;
 `;
 
 export const Date = styled.section`

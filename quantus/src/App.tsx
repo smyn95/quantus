@@ -1,6 +1,6 @@
 import * as S from './app.styles';
 import { ChangeEvent, useState } from 'react';
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, LoadingOutlined } from '@ant-design/icons';
 import AllocationPage from './components/units/allocation/allocation';
 import DualPage from './components/units/dual';
 import DefensePage from './components/units/defense';
@@ -12,8 +12,13 @@ function App() {
   const [monthTab, setMonthTab] = useState(0);
   const [banner, setBanner] = useState(false);
   const [strategy, setStrategy] = useState('');
+  const [backTest, setBackTest] = useState('백테스트');
   const [aniMode, setAniMode] = useState(false);
   const [, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isGraph, setIsGraph] = useState(false);
+  const [graph, setGraph] = useState(0);
+
   const btnArray = [
     '월별',
     '분기별',
@@ -99,6 +104,27 @@ function App() {
 
   const onChangeStrategy = (event: ChangeEvent<HTMLInputElement>) => {
     setStrategy(event.target.value);
+  };
+
+  const onClickBtn = () => {
+    setIsLoading(true);
+    setBackTest('대기중... ');
+    setTimeout(() => {
+      setIsLoading(false);
+      setBackTest('');
+      setIsGraph(true);
+      setGraph(100);
+    }, 2000);
+    setTimeout(() => {
+      setIsGraph(false);
+      setBackTest('생성중... ');
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        setGraph(0);
+        setBackTest('백테스트');
+      }, 1200);
+    }, 3500);
   };
 
   return (
@@ -307,7 +333,17 @@ function App() {
           </Space>
         </S.Date>
 
-        <S.Test type='submit'>백테스트</S.Test>
+        {!isGraph && (
+          <S.Test type='submit' onClick={onClickBtn}>
+            {backTest} {isLoading ? <LoadingOutlined /> : null}
+          </S.Test>
+        )}
+
+        {isGraph && (
+          <S.TestOnLoading>
+            <S.GraphPercent graph={graph}></S.GraphPercent>
+          </S.TestOnLoading>
+        )}
       </S.Wrapper>
       <S.Footer>
         <ul>
