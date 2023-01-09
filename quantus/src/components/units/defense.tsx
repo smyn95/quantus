@@ -83,7 +83,7 @@ export const AllocationList: any = styled.ul`
     display: flex;
     align-items: center;
     justify-content: center;
-    &:nth-of-type(${(props: any) => (props.tab ? props.tab : 1)}) {
+    &:nth-of-type(${(props: any) => (props.tab ? props.tab + 1 : 1)}) {
       background-color: #ec612629;
     }
 

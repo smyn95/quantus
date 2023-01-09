@@ -269,7 +269,8 @@ export const AllocationList: any = styled.ul`
     justify-content: center;
 
     &:nth-of-type(
-        ${(props: any) => (props.monthTab ? props.monthTab + 1 : 1)}
+        ${(props: any) =>
+            props.monthTab || props.tab ? (props.monthTab || props.tab) + 1 : 1}
       ) {
       background-color: #ec612629;
     }

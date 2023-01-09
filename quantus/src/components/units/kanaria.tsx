@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function KanariaPage(props: any) {
   const [, setIsOpen] = useState(false);
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(Math.floor(Math.random() * 20));
   const [aniMode, setAniMode] = useState(false);
 
   const onClickTab = (event: any) => {
@@ -83,7 +83,7 @@ export const AllocationList: any = styled.ul`
     display: flex;
     align-items: center;
     justify-content: center;
-    &:nth-of-type(${(props: any) => (props.tab ? props.tab : 5)}) {
+    &:nth-of-type(${(props: any) => (props.tab ? props.tab + 1 : 1)}) {
       background-color: #ec612629;
     }
 
