@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 
   .ant-picker-range {
     border-radius: 4px;
-    width: 480px;
+    width: 600px;
     background: transparent;
     height: 45px;
 
@@ -41,12 +41,12 @@ export const Wrapper = styled.div`
 `;
 
 export const BannerWrapper = styled.div`
-  width: 945px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  padding: 0 300px;
 `;
 
 export const Banner = styled.section`
@@ -219,7 +219,7 @@ export const Allocation = styled.section`
 `;
 
 export const AllocationMenu: any = styled.ul`
-  width: 480px;
+  width: 600px;
   padding-top: 30px;
   > li:last-of-type {
     border: 1px solid ${(props: any) => (props.aniMode ? '#ec6126' : '#9f9f9f')};
@@ -245,7 +245,7 @@ export const AllocationList: any = styled.ul`
   position: absolute;
   top: 60px !important;
   display: flex;
-  width: 480px;
+  width: 600px;
   flex-direction: column;
   align-items: center;
   background: black;
@@ -283,7 +283,7 @@ export const AllocationList: any = styled.ul`
 
 export const Balance = styled.ul`
   padding-top: 30px;
-  width: 480px;
+  width: 600px;
   > li {
     &:last-of-type {
       border: 1px solid #9f9f9f;
@@ -354,7 +354,7 @@ export const GraphPercent: any = styled.span`
 `;
 
 export const Date = styled.section`
-  width: 480px;
+  width: 600px;
   padding-top: 24px;
   ul {
     display: flex;
@@ -371,7 +371,7 @@ export const Data = styled.data``;
 export const DataList: any = styled.ul`
   position: absolute;
   top: -610% !important;
-  width: 480px;
+  width: 600px;
   height: 290px;
   overflow-y: auto;
   background: black;

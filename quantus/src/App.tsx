@@ -235,7 +235,12 @@ function App() {
                           <S.Balance>
                             <li>비중</li>
                             <li>
-                              <input type='number' defaultValue={100} />
+                              <input
+                                type='number'
+                                defaultValue={100}
+                                maxLength={100}
+                                pattern='[0-9]*'
+                              />
                             </li>
                           </S.Balance>
                           <S.Span>0~100까지 입력할 수 있습니다.</S.Span>
