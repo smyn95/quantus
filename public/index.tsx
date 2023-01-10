@@ -1,8 +1,8 @@
 import { Global } from '@emotion/react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import { globalStyles } from './commons/styles/globalStyles';
+import App from '../src/App';
+import { globalStyles } from '../src/commons/styles/globalStyles';
 import 'antd/dist/reset.css';
 import { BrowserRouter } from 'react-router-dom';
 
