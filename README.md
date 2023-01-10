@@ -4,7 +4,7 @@
 
 ## 전략배분 (정적자산배분)
 
-![qauntusMain.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/382e7f00-4118-4642-9af2-b88e60e7fa3d/qauntusMain.png)
+<img width="720" alt="qauntusMain" src="https://user-images.githubusercontent.com/72180863/211494259-e1d58826-4d18-4853-84d5-c70324fc8ee7.png">
 
 - ***전략 이름을 입력하세요***
     - input에 onChange를 이용해 빈값이면 false(disabled) 값이 있으면 true(click이벤트 활성화)를 
@@ -37,7 +37,7 @@
 
 ## 듀얼모멘텀, VAA, DAA
 
-![듀얼모멘텀.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/58451951-bf81-4f71-a72c-70afbe616528/%E1%84%83%E1%85%B2%E1%84%8B%E1%85%A5%E1%86%AF%E1%84%86%E1%85%A9%E1%84%86%E1%85%A6%E1%86%AB%E1%84%90%E1%85%A5%E1%86%B7.png)
+<img width="720" alt="dualmomentum" src="https://user-images.githubusercontent.com/72180863/211494202-f56a0dd6-9860-447a-aad8-ff043ecab243.png">
 
 - ***공격자산, 방어자산, 카나리아 자산***
     - 공통 컴포넌트로 제작
