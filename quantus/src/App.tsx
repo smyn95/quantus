@@ -158,6 +158,7 @@ function App() {
             dual={dual}
           />
         )}
+
         {tab === 2 && (
           <VaaPage
             defenseArray={defenseArray}
@@ -165,6 +166,7 @@ function App() {
             vaaDefenseArray={vaaDefenseArray}
           />
         )}
+
         {tab === 3 && (
           <DaaPage
             dualArray={dualArray}

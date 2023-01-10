@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 export default function DualPage(props: any) {
   const [isOpen, setIsOpen] = useState(false);
-  const [tab, setTab] = useState(Math.floor(Math.random() * 10));
+  const [tab, setTab] = useState(~~(Math.random() * 10));
   const [aniMode, setAniMode] = useState(false);
 
   const onClickTab = (event: any) => {

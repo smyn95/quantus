@@ -19,7 +19,7 @@ export default function AllocationPage(props: any) {
         <li onClick={onClickOpenModal}>
           {btnArray[props.tab]}
           <S.AllocationList tab={props.tab} aniMode={aniMode}>
-            {btnArray.map((el: any, i: number) => (
+            {btnArray.map((el: string, i: number) => (
               <li id={String(i)} key={i} onClick={props.onClickTab}>
                 {el}
               </li>

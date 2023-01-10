@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# quauntus
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 퀀터스 과제
 
-## Available Scripts
+## 전략배분 (정적자산배분)
 
-In the project directory, you can run:
+<img width="70" src="/qauntusMain.png" alt="자산분배 탭 이미지" />
 
-### `npm start`
+- **_전략 이름을 입력하세요_**
+  - input에 onChange를 이용해 빈값이면 false(disabled) 값이 있으면 true(click이벤트 활성화)를
+    체크하여 버튼에 불이 들어옵니다.
+  - position:fixed로 스크롤을 내려도 전략 이름을 입력할수 있게 따라 내려옵니다.
+- **_자산배분 알고리즘_**
+  - option들을 각 클릭했을때 state가 id를 받아오며 그 탭에 데이터를
+    삼항연산자로 분기하여 뿌려주었습니다.
+- **_자산배분 알고리즘, 주기 리밸런싱_**
+  - option을 클릭하여 state에 저장된 id를 props로 styled-component에 넘겨주어
+    background를 주었습니다.
+  - 자산배분 알고리즘, 주기 리밸런싱 select는 ul.li로 구현하였습니다.
+  - 공통 컴포넌트로 안에 option 값들은 배열에서 map으로 데이터가 뿌려집니다.
+- **_자산군 추가_**
+  - new Array를 생성하여 매개변수가 minus,plus를 확인해서 추가되고 삭제됩니다.
+  - 비중의 input defaultValue는 100입니다.
+  - 삼항연산자로 분기하여 추가하기 버튼은 마지막에만 출력됩니다.
+- **_날짜_**
+  - Antd 컴포넌트를 사용하여 스타일 수정하였습니다.
+- **_백테스트 버튼_**
+  - setTimeout안에 대기중,게이지,생성중을 state를 활용하여 true, false를 체크하며 분기를 주었습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 듀얼모멘텀, VAA, DAA
 
-### `npm test`
+<img width="70" src="/dualmomentum.png" alt="듀얼모멘텀 이미지" />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **_공격자산, 방어자산, 카나리아 자산_**
+  - 공통 컴포넌트로 제작
+  - 갯수가 늘어나도 display:flex로 자연스럽게 떨어지게끔 제작하였습니다.
+  - option값은 배열생성하였고 해당탭의 갯수만큼 map으로 뿌려주었습니다.
+  - option값안에 데이터가 select 초기값은 random으로 보여집니다.
+  - select 클릭시 영역 외를 클릭하면 해당 select가 닫히고, 다른 select를 클릭해도 닫힙니다.(1개만 열림)
+- **_모멘텀 기간_**
+  - 공통 컴포넌트로 안에 option 값들은 배열에서 map으로 데이터가 뿌려집니다.
