@@ -83,7 +83,7 @@ export default function PeriodPage(props: any) {
                 <S.DelBtn onClick={optionEntity('minus')}>삭제하기</S.DelBtn>
               </>
             ))}
-            <button onClick={() => a()}>추가하기</button>
+            <button onClick={optionEntity('plus')}>추가하기</button>
           </>
         )}
         {!addData && <button onClick={onClickAdd}>추가하기</button>}
