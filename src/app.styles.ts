@@ -366,66 +366,7 @@ export const Date = styled.section`
   }
 `;
 
-export const Data: any = styled.data`
-  > ul {
-    width: 600px;
-    padding-top: 30px;
-    > li:last-of-type {
-      border: 1px solid
-        ${(props: any) => (props.aniMode ? '#ec6126' : '#9f9f9f')};
-      height: 50px;
-      margin-top: 18px;
-      &:after {
-        content: '^';
-        position: absolute;
-        color: #ec6126;
-        right: 3%;
-        font-size: 20px;
-        font-weight: 100;
-        transform: ${(props: any) =>
-          props.aniMode ? 'rotate(0deg)' : 'rotate(-180deg)'};
-      }
-      &:hover {
-        border: 1px solid
-          ${(props: any) => (props.aniMode ? '#ec6126' : 'white')};
-      }
-    }
-    > li > ul {
-      position: absolute;
-      top: -610% !important;
-      width: 600px;
-      height: 290px;
-      overflow-y: auto;
-      background: black;
-      opacity: 0;
-      z-index: ${(props: any) => (props.isOpen ? '9999' : '-1')};
-      animation: ${(props: any) =>
-        props.isOpen
-          ? css`
-              ${fadeDown} 0.3s ease-in-out 0.2s forwards
-            `
-          : css`
-              ${fadeUp} 0.3s ease-in-out forwards
-            `};
-
-      > li {
-        height: 36px;
-        background: black;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding-left: 20px;
-        &:last-of-type {
-          justify-content: flex-start !important;
-        }
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.1);
-        }
-      }
-    }
-  }
-`;
+export const Data = styled.data``;
 
 export const DataList: any = styled.ul`
   position: absolute;

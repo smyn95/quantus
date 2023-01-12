@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import * as S from '../../../app.styles';
+import AddDataPage from '../addData';
 
 export default function PeriodPage(props: any) {
   const [aniMode, setAniMode] = useState(false);
   const [addData, setAddData] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [dataTab, setDataTab] = useState(0);
+  const dataArray = new Array(100000).fill(1);
   const [option, setOption] = useState(0);
 
   const btnArray = [
@@ -34,13 +34,6 @@ export default function PeriodPage(props: any) {
     }
   };
 
-  const onClickDataModal = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  const onClickDataTab = (event: any) => {
-    setDataTab(Number(event?.currentTarget.id));
-  };
   return (
     <>
       <S.AllocationMenu aniMode={aniMode}>
@@ -72,16 +65,9 @@ export default function PeriodPage(props: any) {
           <>
             {new Array(option).fill(1).map((_, i) => (
               <>
-                <S.Data isOpen={isOpen} dataTab={dataTab}>
-                  <ul>
-                    <li>자산</li>
-                    <li onClick={onClickDataModal}>
-                      삼양홀딩스
-                      <ul>
-                        <li onClick={onClickDataTab}>삼양홀딩스</li>
-                      </ul>
-                    </li>
-                  </ul>
+                <S.Data>
+                  <AddDataPage i={i} dataArray={dataArray} />
+
                   <S.Balance>
                     <li>비중</li>
                     <li>
